@@ -1,1 +1,10 @@
-<h1>Authentication / <%= title %></h1>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+<link rel="stylesheet" href="/css/home.css">
+
+<% if(locals.user) { %>
+  <h1>Welcome <span><%= user.name %></span></h1>
+<% } else { %>
+  <div class="welcome-ctr">
+    <h1 class="h1-heading">Sign in and enjoy features</h1>
+  </div>
+<% } %> 
