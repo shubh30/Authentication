@@ -31,6 +31,7 @@ module.exports.signIn = function(req, res) {
 // get the sign up data 
 module.exports.create = function(req, res) {
   if(req.body.password != req.body.confirm_password){
+    req.flash('error', 'Password and confirm password are not same');
     return res.redirect('back');
   }
 
@@ -40,10 +41,12 @@ module.exports.create = function(req, res) {
     if(!user){
       User.create(req.body, function(err, user){
         if(err){ console.log('Error in creating user while signing up'); return; }
-
+        
+        req.flash('success', 'Signed up successfully');
         return res.redirect('/users/sign-in');
       })
     } else {
+      req.flash('success', 'You have already registered');
       return res.redirect('back');
     }
   })
